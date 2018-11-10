@@ -59,7 +59,7 @@ func main() {
 			fmt.Println(err)
 		}
 		defer file.Close()
-		fmt.Fprintln(file, getContent(opts.Args.Title, opts.Type, t))
+		fmt.Fprintln(file, getContent(t, opts.Args.Title, opts.Type))
 		// fmt.Fprintln(file, "書き込み〜！") //書き込み
 		fmt.Printf("finished to make file: %s\n", fileName)
 	} else {

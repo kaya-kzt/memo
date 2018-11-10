@@ -7,10 +7,14 @@ import (
 
 var tFormat = "Jan 02 2006"
 
-func getContent(t, f string, tt time.Time) string {
-	if f == "txt" {
-		return fmt.Sprintf("%s\n%s\n----\n\n",
-			t, tt.Format(tFormat))
+func getContent(t time.Time, title, format string) string {
+	var s string
+	if format == "txt" {
+		s += fmt.Sprintf("%s\nDate: %s\nAttendees: \nAgenda: \n----\n\n",
+			title, t.Format(tFormat))
+	} else if format == "md" {
+		s += fmt.Sprintf("#%s\n*Date*: %s\n*Attendees*: \n*Agenda*: \n***\n\n",
+			title, t.Format(tFormat))
 	}
-	return ""
+	return s
 }
